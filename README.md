@@ -1,8 +1,6 @@
-# Webpack Configuration
+# Ready to start a new React Project
 
-> Webpack 4 boilerplate with Babel, SASS, eslint, DevServer, HMR, Jest, Prettier and Performances and Optimization Techniques.
-
-![webpack](https://cdn-images-1.medium.com/max/2000/1*y2PxPRAMevq1yY_j9gQBVg.jpeg)
+> Webpack, Redux, Redux-Saga, React-Routes, Axios
 
 ## Requirements
 
@@ -13,7 +11,7 @@
 Copy this project without git from terminal.
 
 ```
-curl -L -o master.zip https://github.com/victors1681/webpack-boilerplate/archive/master.zip && unzip master.zip && rm master.zip
+curl -L -o master.zip https://github.com/victors1681/react-boilerplate/archive/master.zip && unzip master.zip && rm master.zip
 
 ```
 
