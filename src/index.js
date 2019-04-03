@@ -1,21 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import Main from "./containers/main";
 import Store from "./store";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navigation from "components/navigation";
-import NotFound from "components/notFound";
+import Routes from "./routes";
+import { ThemeProvider } from "styled-components";
+import theme from "./common/theme/theme";
+import "./common/theme/fontFace.scss";
 
 ReactDOM.render(
   <Provider store={Store}>
-    <BrowserRouter>
-      <Navigation />
-      <Switch>
-        <Route path="/" component={Main} exact />
-        <Route component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <Routes />
+    </ThemeProvider>
   </Provider>,
   document.getElementById("mainApp")
 );

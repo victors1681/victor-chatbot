@@ -64,6 +64,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "axios": "^0.18.0",
+    "formik": "^1.5.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
@@ -72,6 +73,7 @@
     "redux-actions": "^2.6.5",
     "redux-saga": "^1.0.2",
     "regenerator-runtime": "^0.13.1",
-    "scheduler": "^0.13.2"
+    "scheduler": "^0.13.2",
+    "styled-components": "^4.2.0"
   }
 }
