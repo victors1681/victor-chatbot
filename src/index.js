@@ -6,11 +6,14 @@ import Routes from "./routes";
 import { ThemeProvider } from "styled-components";
 import theme from "./common/theme/theme";
 import "./common/theme/fontFace.scss";
+import AppProvicer from "./AppProvider";
 
 ReactDOM.render(
   <Provider store={Store}>
     <ThemeProvider theme={theme}>
-      <Routes />
+      <AppProvicer>
+        <Routes />
+      </AppProvicer>
     </ThemeProvider>
   </Provider>,
   document.getElementById("mainApp")

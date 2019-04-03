@@ -16,7 +16,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-configureRestClient(store, "https://jsonplaceholder.typicode.com");
+configureRestClient(store, "/api");
 
 rootSaga(sagaMiddleware);
 
