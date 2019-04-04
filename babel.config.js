@@ -26,6 +26,7 @@ module.exports = api => ({
     "@babel/plugin-proposal-throw-expressions",
     "@babel/plugin-transform-spread",
     "@babel/plugin-transform-regenerator",
-    "@babel/plugin-transform-runtime"
+    "@babel/plugin-transform-runtime",
+    "babel-plugin-styled-components"
   ]
 });
