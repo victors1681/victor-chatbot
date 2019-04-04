@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Card, Content, Header } from "./Landing.style";
 import UserContext from "../../contexts/UserContext";
 import ChatContext from "../../contexts/ChatContext";
@@ -38,14 +38,38 @@ const onValidate = values => {
 
 const Landing = ({ history }) => {
   const chatContext = useContext(ChatContext);
-  console.log("contexttt", chatContext);
+  const userInput = useRef();
+
+  useEffect(() => {
+    userInput.current.focus();
+  }, []);
 
   return (
     <UserContext.Consumer displayName="AppContext Consumer">
       {userContext => (
         <Card>
           <Header>Welcome to Amelia Social</Header>
-          <Content>{getForm(userContext, chatContext, history)}</Content>
+          <Content>
+            <Formik
+              onSubmit={onHandleSubmit(userContext, chatContext, history)}
+              validate={onValidate}
+              initialValues={{ name: "" }}
+            >
+              {props => (
+                <Form onSubmit={props.handleSubmit}>
+                  <CardInput
+                    name="name"
+                    placeholder="Name"
+                    autoComplete="off"
+                    innerRef={userInput}
+                  />
+                  <CardButton disabled={props.isSubmitting} type="submit">
+                    Start Chat
+                  </CardButton>
+                </Form>
+              )}
+            </Formik>
+          </Content>
           <CardLink href="https://www.ipsoft.com" target="_blank">
             Learn more about IPSoft
           </CardLink>
@@ -54,22 +78,5 @@ const Landing = ({ history }) => {
     </UserContext.Consumer>
   );
 };
-
-const getForm = (userContext, chatContext, history) => (
-  <Formik
-    onSubmit={onHandleSubmit(userContext, chatContext, history)}
-    validate={onValidate}
-    initialValues={{ name: "" }}
-  >
-    {props => (
-      <Form onSubmit={props.handleSubmit}>
-        <CardInput name="name" placeholder="Name" autoComplete="off" />
-        <CardButton disabled={props.isSubmitting} type="submit">
-          Start Chat
-        </CardButton>
-      </Form>
-    )}
-  </Formik>
-);
 
 export default Landing;

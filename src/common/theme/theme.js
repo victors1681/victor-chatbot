@@ -6,8 +6,8 @@ const theme = {
     size: "14px"
   },
   colors: {
-    primary: "#4391E7",
-    secondary: "#245E8D"
+    primary: "#43C7FF",
+    secondary: "#295E8A"
   }
 };
 
