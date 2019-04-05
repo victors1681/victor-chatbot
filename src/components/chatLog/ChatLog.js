@@ -7,7 +7,7 @@ import moment from "moment";
 import "./style.scss";
 
 const getUserMessage = log => {
-  const className = log.from === "Amelia" ? "bubble me" : "bubble you";
+  const className = log.from === "bot" ? "bubble me" : "bubble you";
   return (
     <div key={log.id} className={className}>
       <div className="text"> {log.text} </div>

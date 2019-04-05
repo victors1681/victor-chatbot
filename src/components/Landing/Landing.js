@@ -15,13 +15,10 @@ const onHandleSubmit = (userContext, chatContext, history) => (
   { name },
   { setSubmitting }
 ) => {
-  console.log(userContext);
-  sendText("hi", "amelia").then(res => {
+  sendText("hi", name).then(res => {
     if (res.status > 200 && res.status < 205) {
-      const { setUser } = userContext;
-      setUser(name);
-      chatContext.addChatMessage(res.data.result, "Amelia");
-      console.log("User Context", userContext);
+      userContext.setUser(name);
+      chatContext.addChatMessage(res.data);
       history.push("/welcome");
       setSubmitting(false);
     }

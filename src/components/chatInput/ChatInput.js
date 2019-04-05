@@ -12,17 +12,15 @@ const onHandleSubmit = (userContext, chatContext, inputRef) => (
   { inputChat },
   { setSubmitting, resetForm }
 ) => {
-  chatContext.addChatMessage(inputChat, userContext.name);
+  chatContext.addMsgFromCurrentUser(inputChat, userContext.name);
   chatContext.setRequesting(true);
   resetForm();
   sendText(inputChat, userContext.name)
     .then(sleep(Math.floor(Math.random() * 2000)))
     .then(res => {
       if (res.status > 200 && res.status < 205) {
-        const { setUser } = userContext;
-        setUser(name);
         chatContext.setRequesting(true);
-        chatContext.addChatMessage(res.data.result, "Amelia");
+        chatContext.addChatMessage(res.data);
         inputRef.current.focus();
       }
     });

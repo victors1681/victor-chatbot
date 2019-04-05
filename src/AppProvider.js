@@ -5,26 +5,34 @@ import uuid from "uuid/v1";
 
 const AppProvicer = props => {
   const setUser = userName => {
-    console.log("BEFORE set state", user);
     setUserState(prev => ({
       ...prev,
       name: userName
     }));
-    console.log("AFTER set state", user);
   };
 
-  const addChatMessage = (msg, user, turns) => {
+  const addMsgFromCurrentUser = msg => {
+    const payload = {
+      result: msg,
+      turns: null
+    };
+    addChatMessage(payload, user.name);
+  };
+
+  const addChatMessage = (data, user) => {
+    const { result, turns } = data;
+
     const message = {
       id: uuid(),
-      text: msg,
-      from: user
+      text: result,
+      from: user ? user : "bot"
     };
 
     setChatState(prev => ({
       ...prev,
       request: false,
       items: [...prev.items, message],
-      turns: turns ? turns : 0
+      turns: turns ? turns : prev.turns
     }));
   };
 
@@ -38,6 +46,7 @@ const AppProvicer = props => {
   initialUser.setUser = setUser;
   initialChat.addChatMessage = addChatMessage;
   initialChat.setRequesting = setRequesting;
+  initialChat.addMsgFromCurrentUser = addMsgFromCurrentUser;
 
   const [user, setUserState] = useState(initialUser);
   const [chat, setChatState] = useState(initialChat);
