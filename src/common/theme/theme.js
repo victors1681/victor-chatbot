@@ -7,7 +7,10 @@ const theme = {
   },
   colors: {
     primary: "#43C7FF",
-    secondary: "#295E8A"
+    secondary: "#295E8A",
+    header: "gray",
+    error: "#EB7171",
+    success: "#88D551"
   }
 };
 

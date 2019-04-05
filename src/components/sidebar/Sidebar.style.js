@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { CardButton } from "common/styles/common.styled.js";
+import { Link } from "react-router-dom";
 
 export const SidebarWrapper = styled.div`
   border-left: 1px solid #dedede;
@@ -48,4 +49,7 @@ export const TurnsHeader = styled.h5`
   text-transform: uppercase;
   font-weight: 300;
 `;
-export const DoneButtn = styled(CardButton)``;
+export const DoneButtn = styled(CardButton)`
+  text-align: center;
+  text-decoration: none;
+`;

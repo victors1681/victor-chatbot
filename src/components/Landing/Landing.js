@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { Card, Content, Header } from "./Landing.style";
 import UserContext from "../../contexts/UserContext";
 import ChatContext from "../../contexts/ChatContext";
+import { Error } from "common/styles/common.styled";
 
 import {
   CardInput,
@@ -13,22 +14,28 @@ import { sendText } from "../../api/api";
 
 const onHandleSubmit = (userContext, chatContext, history) => (
   { name },
-  { setSubmitting }
+  { setSubmitting, setErrors }
 ) => {
-  sendText("hi", name).then(res => {
-    if (res.status > 200 && res.status < 205) {
-      userContext.setUser(name);
-      chatContext.addChatMessage(res.data);
-      history.push("/welcome");
+  sendText("hi", name)
+    .then(res => {
+      if (res.status > 200 && res.status < 205) {
+        userContext.setUser(name);
+        chatContext.addChatMessage(res.data);
+        history.push("/welcome");
+        setSubmitting(false);
+      }
+    })
+    .catch(e => {
+      console.error("ERRORORORO", e.response);
+      setErrors({ server: e.response.statusText });
       setSubmitting(false);
-    }
-  });
+    });
 };
 
 const onValidate = values => {
   const errors = {};
   if (!values.name) {
-    errors.name = "Required";
+    errors.name = "Name is required";
   }
   return errors;
 };
@@ -54,6 +61,10 @@ const Landing = ({ history }) => {
             >
               {props => (
                 <Form onSubmit={props.handleSubmit}>
+                  {props.errors &&
+                    Object.keys(props.errors).map(e => (
+                      <Error key={e}> {props.errors[e]}</Error>
+                    ))}
                   <CardInput
                     name="name"
                     placeholder="Name"

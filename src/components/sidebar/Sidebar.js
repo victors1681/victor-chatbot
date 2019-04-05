@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import ChatContext from "../../contexts/ChatContext";
+import { Link } from "react-router-dom";
 import {
   SidebarWrapper,
   DisplayUser,
@@ -30,7 +31,9 @@ const Sidebar = () => {
         <ActionWrapper />
         <GoalHeader>Goal: 8 Turns </GoalHeader>
         <TurnsHeader>So far: {chatContext.turns} turns</TurnsHeader>
-        <DoneButtn>Done</DoneButtn>
+        <DoneButtn as={Link} to="/survey">
+          Done
+        </DoneButtn>
       </InstructionsWrapper>
     </SidebarWrapper>
   );
