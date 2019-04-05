@@ -5,9 +5,9 @@ import {
   RightPanel,
   ChatBoxWrapper
 } from "./Chat.styled";
-import ChatBox from "components/chatbox";
 import ChatLog from "components/chatLog";
 import ChatInput from "components/chatInput";
+import Sidebar from "components/sidebar";
 
 const Chat = () => {
   return (
@@ -18,7 +18,9 @@ const Chat = () => {
           <ChatInput />
         </ChatBoxWrapper>
       </LeftPanel>
-      <RightPanel>right</RightPanel>
+      <RightPanel>
+        <Sidebar />
+      </RightPanel>
     </ChatWrapper>
   );
 };

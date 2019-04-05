@@ -28,6 +28,11 @@ export const InputText = styled(Field)`
     box-shadow: 0 10px 15px 0 rgba(223, 223, 228, 0.8),
       0 1px 1px 0 rgba(174, 174, 174, 0.1);
   }
+  &:disabled {
+    cursor: auto;
+    transform: none;
+    opacity: 0.5;
+  }
 `;
 
 export const SendIcon = styled(IoIosPaperPlane)`

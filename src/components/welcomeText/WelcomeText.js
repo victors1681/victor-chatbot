@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { render } from "react-dom";
 import UserContext from "../../contexts/UserContext";
 import { useTrail, animated } from "react-spring";
 import { ThemeConsumer } from "styled-components";

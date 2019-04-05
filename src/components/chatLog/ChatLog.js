@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import ChatContext from "../../contexts/ChatContext";
 import { ChatLogWrapper } from "./ChatLog.styled";
 import LoadingDots from "components/loadingDots";
+import moment from "moment";
 
 import "./style.scss";
 
@@ -17,16 +18,22 @@ const getUserMessage = log => {
 
 const ChatLog = () => {
   const chatContext = useContext(ChatContext);
+  const chatRef = useRef();
+
+  useEffect(() => {
+    const chatContainer = chatRef.current;
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+  });
+
   return (
-    <ChatLogWrapper>
-      <div className="chat active-chat" data-chat="person4">
-        <div className="conversation-start">
-          <span>Yesterday, 4:20 PM</span>
-        </div>
-        {chatContext.items.map(log => getUserMessage(log))}
-        {chatContext.request && <LoadingDots />}
+    <div className="chat active-chat" ref={chatRef}>
+      <div className="fix" />
+      <div className="conversation-start">
+        <span>{moment().format("MMMM   Do   YYYY")}</span>
       </div>
-    </ChatLogWrapper>
+      {chatContext.items.map(log => getUserMessage(log))}
+      {chatContext.request && <LoadingDots />}
+    </div>
   );
 };
 

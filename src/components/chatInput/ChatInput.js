@@ -8,12 +8,13 @@ import { sendText } from "../../api/api";
 const sleep = ms => x =>
   new Promise(resolve => setTimeout(() => resolve(x), ms));
 
-const onHandleSubmit = (userContext, chatContext) => (
+const onHandleSubmit = (userContext, chatContext, inputRef) => (
   { inputChat },
   { setSubmitting, resetForm }
 ) => {
   chatContext.addChatMessage(inputChat, userContext.name);
   chatContext.setRequesting(true);
+  resetForm();
   sendText(inputChat, userContext.name)
     .then(sleep(Math.floor(Math.random() * 2000)))
     .then(res => {
@@ -22,7 +23,7 @@ const onHandleSubmit = (userContext, chatContext) => (
         setUser(name);
         chatContext.setRequesting(true);
         chatContext.addChatMessage(res.data.result, "Amelia");
-        resetForm();
+        inputRef.current.focus();
       }
     });
 };
@@ -38,22 +39,27 @@ const onValidate = values => {
 const ChatInput = () => {
   const userContext = useContext(UserContext);
   const chatContext = useContext(ChatContext);
-  const input = useRef();
+  const inputRef = useRef();
 
   useEffect(() => {
-    input.current.focus();
+    inputRef.current.focus();
   }, []);
 
   return (
     <InputWrapper>
       <Formik
-        onSubmit={onHandleSubmit(userContext, chatContext)}
+        onSubmit={onHandleSubmit(userContext, chatContext, inputRef)}
         validate={onValidate}
         initialValues={{ inputChat: "" }}
       >
         {props => (
           <Form onSubmit={props.handleSubmit}>
-            <InputText name="inputChat" autoComplete="off" innerRef={input} />
+            <InputText
+              name="inputChat"
+              autoComplete="off"
+              innerRef={inputRef}
+              disabled={props.isSubmitting}
+            />
             <SendBtn type="submit" disabled={props.isSubmitting}>
               <SendIcon />
             </SendBtn>

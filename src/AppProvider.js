@@ -13,7 +13,7 @@ const AppProvicer = props => {
     console.log("AFTER set state", user);
   };
 
-  const addChatMessage = (msg, user) => {
+  const addChatMessage = (msg, user, turns) => {
     const message = {
       id: uuid(),
       text: msg,
@@ -23,7 +23,8 @@ const AppProvicer = props => {
     setChatState(prev => ({
       ...prev,
       request: false,
-      items: [...prev.items, message]
+      items: [...prev.items, message],
+      turns: turns ? turns : 0
     }));
   };
 

@@ -25,4 +25,5 @@ export const RightPanel = styled.div`
     position: inherit;
     right 0;
     width: 30%;
+    display: flex;
 `;
