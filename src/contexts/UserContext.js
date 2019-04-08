@@ -1,6 +1,7 @@
 import React from "react";
 
 export const user = {
+  id: null,
   name: "",
   request: false,
   success: false,

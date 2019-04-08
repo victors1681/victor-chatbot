@@ -4,7 +4,7 @@ import { useTrail, animated } from "react-spring";
 import { ThemeConsumer } from "styled-components";
 import { TextWrapper, TextTrails } from "./welcome.styled";
 
-const items = ["Hello", "Victor"];
+const items = ["Hello"];
 const config = { mass: 5, tension: 2000, friction: 200, duration: 1000 };
 
 const WelcomeText = ({ history }) => {
@@ -12,6 +12,7 @@ const WelcomeText = ({ history }) => {
   const userContext = useContext(UserContext);
   const stateRef = useRef(toggle);
   stateRef.current = toggle;
+  items.push(userContext.name);
 
   const completeAnimation = () => {
     setTimeout(() => {
@@ -20,9 +21,8 @@ const WelcomeText = ({ history }) => {
   };
 
   useEffect(() => {
-    items.push(userContext.name);
     completeAnimation();
-  }, [false]);
+  }, []);
 
   const trail = useTrail(items.length, {
     config,
@@ -31,6 +31,7 @@ const WelcomeText = ({ history }) => {
     height: toggle ? 25 : 0,
     from: { opacity: 0, x: 20, height: 0 }
   });
+
   const getCustomText = (index, theme) => ({
     color: index === 1 ? theme.colors.primary : "inherit"
   });

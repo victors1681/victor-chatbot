@@ -12,7 +12,7 @@ const onHandleSubmit = (userContext, chatContext, inputRef) => (
   { inputChat },
   { setSubmitting, resetForm }
 ) => {
-  chatContext.addMsgFromCurrentUser(inputChat, userContext.name);
+  chatContext.addMsgFromCurrentUser(inputChat);
   chatContext.setRequesting(true);
   resetForm();
   sendText(inputChat, userContext.name)

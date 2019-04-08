@@ -9,7 +9,7 @@ import {
   CardButton,
   CardLink
 } from "common/styles/common.styled.js";
-import { withFormik, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { sendText } from "../../api/api";
 
 const onHandleSubmit = (userContext, chatContext, history) => (
@@ -26,7 +26,6 @@ const onHandleSubmit = (userContext, chatContext, history) => (
       }
     })
     .catch(e => {
-      console.error("ERRORORORO", e.response);
       setErrors({ server: e.response.statusText });
       setSubmitting(false);
     });

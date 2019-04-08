@@ -49,7 +49,12 @@ export const TurnsHeader = styled.h5`
   text-transform: uppercase;
   font-weight: 300;
 `;
-export const DoneButtn = styled(CardButton)`
+
+const isTurnDisabled = props => props.disable.turns < props.disable.turnsGoal;
+
+export const DoneButton = styled(CardButton)`
   text-align: center;
   text-decoration: none;
+  opacity: ${props => (isTurnDisabled(props) ? 0.5 : 1)};
+  pointer-events: ${props => (isTurnDisabled(props) ? "none" : "auto")};
 `;

@@ -12,12 +12,15 @@ import {
   ActionWrapper,
   GoalHeader,
   TurnsHeader,
-  DoneButtn
+  DoneButton
 } from "./Sidebar.style.js";
 
 const Sidebar = () => {
   const userContext = useContext(UserContext);
   const chatContext = useContext(ChatContext);
+
+  const turnsGoal = 1;
+
   return (
     <SidebarWrapper>
       <DisplayUser>{userContext.name}</DisplayUser>
@@ -29,11 +32,15 @@ const Sidebar = () => {
           Done button.
         </Instruction>
         <ActionWrapper />
-        <GoalHeader>Goal: 8 Turns </GoalHeader>
+        <GoalHeader>Goal: {turnsGoal} Turns </GoalHeader>
         <TurnsHeader>So far: {chatContext.turns} turns</TurnsHeader>
-        <DoneButtn as={Link} to="/survey">
+        <DoneButton
+          as={Link}
+          to="/survey"
+          disable={{ turnsGoal, turns: chatContext.turns }}
+        >
           Done
-        </DoneButtn>
+        </DoneButton>
       </InstructionsWrapper>
     </SidebarWrapper>
   );

@@ -5,7 +5,8 @@ export const chat = {
   success: false,
   failute: false,
   items: [],
-  turns: 0
+  turns: 0,
+  code: null
 };
 
 export const ChatContext = React.createContext(chat);

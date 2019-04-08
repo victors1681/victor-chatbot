@@ -7,6 +7,7 @@ const AppProvicer = props => {
   const setUser = userName => {
     setUserState(prev => ({
       ...prev,
+      id: uuid(),
       name: userName
     }));
   };
@@ -16,7 +17,7 @@ const AppProvicer = props => {
       result: msg,
       turns: null
     };
-    addChatMessage(payload, user.name);
+    addChatMessage(payload, user.id);
   };
 
   const addChatMessage = (data, user) => {
@@ -36,6 +37,13 @@ const AppProvicer = props => {
     }));
   };
 
+  const setCode = code => {
+    setChatState(prev => ({
+      ...prev,
+      code
+    }));
+  };
+
   const setRequesting = status => {
     setChatState(prev => ({
       ...prev,
@@ -47,6 +55,7 @@ const AppProvicer = props => {
   initialChat.addChatMessage = addChatMessage;
   initialChat.setRequesting = setRequesting;
   initialChat.addMsgFromCurrentUser = addMsgFromCurrentUser;
+  initialChat.setCode = setCode;
 
   const [user, setUserState] = useState(initialUser);
   const [chat, setChatState] = useState(initialChat);

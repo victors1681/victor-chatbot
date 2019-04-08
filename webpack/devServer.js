@@ -10,7 +10,7 @@ const getDevServer = () => ({
   inline: true,
   proxy: {
     "/api": {
-      target: "http://deepnlp03.ny3.ipsoft.com:5000",
+      target: "http://10.133.110.31:5000",
       secure: false,
       changeOrigin: true,
       pathRewrite: { "^/api": "" }

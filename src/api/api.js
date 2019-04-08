@@ -4,3 +4,11 @@ export const sendText = async (text, user) => {
   const result = await axios.post("/chat", { text, user });
   return result;
 };
+
+export const endChat = async (values, user) => {
+  const payload = { text: `/endchat/${JSON.stringify(values)}`, user };
+
+  console.error("PAYLOAD", payload);
+  const result = await axios.post("/chat", payload);
+  return result;
+};

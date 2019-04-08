@@ -10,7 +10,9 @@ const theme = {
     secondary: "#295E8A",
     header: "gray",
     error: "#EB7171",
-    success: "#88D551"
+    success: "#88D551",
+    gray: "gray",
+    lightGray: "#dadada"
   }
 };
 

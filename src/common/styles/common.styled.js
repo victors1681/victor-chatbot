@@ -16,7 +16,7 @@ export const MainWrapper = styled.div`
 
 export const Card = styled.div`
   width: 80%;
-  height: 80%;
+  //height: 80%;
   background: white;
   border-radius: 7px;
   padding: 15px;
@@ -44,6 +44,13 @@ export const CardInput = styled(Field)`
     border-bottom-color: ${({ theme }) => theme.colors.primary};
     outline: 0;
   }
+`;
+
+export const CardFooter = styled.div`
+  margin-top: auto;
+  text-align: right;
+  display: flex;
+  justify-content: center;
 `;
 
 export const CardButton = styled.button`
@@ -136,4 +143,15 @@ export const Error = styled.div`
   text-align: center;
   text-transform: lowercase;
   padding: 10px;
+  font-weight: 600;
+`;
+
+export const SecundaryBtn = styled(CardButton)`
+  width: 250px;
+  color: ${({ theme }) => theme.colors.gray};
+  background: ${({ theme }) => theme.colors.lightGray};
+  border-color: ${({ theme }) => theme.colors.gray};
+  box-shadow: none;
+  text-align: center;
+  text-decoration: none;
 `;
