@@ -1,7 +1,4 @@
 import React, { useContext } from "react";
-import Navigation from "components/navigation";
-import NotFound from "components/notFound";
-import Main from "./containers/main";
 import ChatView from "./views/chat";
 import ChatEnd from "./views/chatEnd";
 import Landing from "./components/Landing/Landing";
