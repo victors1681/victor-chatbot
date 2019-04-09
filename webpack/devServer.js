@@ -3,7 +3,7 @@ const path = require("path");
 const getDevServer = () => ({
   contentBase: path.join(__dirname, "..", "public"),
   compress: true,
-  port: 8080,
+  port: 9000,
   hot: true,
   host: "0.0.0.0",
   disableHostCheck: true,
