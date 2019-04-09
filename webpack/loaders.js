@@ -16,7 +16,7 @@ const getCssLoader = env => ({
   ]
 });
 
-const getImageLoader = () => ({
+const getFileLoader = () => ({
   test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|)$/,
   loader: "url-loader"
 });
@@ -30,7 +30,7 @@ const getLoaders = env =>
   [
     getBabelLoader(),
     getCssLoader(env),
-    getImageLoader(),
+    getFileLoader(),
     getXmlRawLoader()
   ].filter(loader => loader);
 

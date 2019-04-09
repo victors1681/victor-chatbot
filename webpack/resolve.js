@@ -2,8 +2,9 @@ const path = require("path");
 
 const getResolve = () => ({
   alias: {
-    view: path.join(__dirname, "..", "src", "View"),
-    container: path.join(__dirname, "..", "src", "Container")
+    components: path.join(__dirname, "..", "src", "components"),
+    containers: path.join(__dirname, "..", "src", "containers"),
+    common: path.join(__dirname, "..", "src", "common")
   },
   extensions: [".js"],
   modules: [

@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.js --env.NODE_ENV=development",
+    "dev": "webpack-dev-server --config webpack.config.js --env.NODE_ENV=development",
+    "start": "node server.js",
     "build": "webpack --config webpack.config.js --env.NODE_ENV=production",
-    "analyze": "npm run start -- --env.analyze"
+    "analyze": "npm run start -- --env.analyze",
+    "heroku-postbuild": " npm run build"
   },
   "repository": {
     "type": "git",
@@ -32,13 +34,16 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-async-to-generator": "^7.3.4",
+    "@babel/plugin-transform-async-to-generator": "^7.4.0",
     "@babel/plugin-transform-classes": "^7.3.4",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-regenerator": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/plugin-transform-spread": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "babel-plugin-styled-components": "^1.10.0",
     "cache-loader": "^2.0.1",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
@@ -48,6 +53,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "raw-loader": "^1.0.0",
     "react-hot-loader": "^4.6.5",
+    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.2",
@@ -59,10 +65,25 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
+    "@babel/polyfill": "^7.4.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "formik": "^1.5.2",
+    "moment": "^2.24.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-google-recaptcha": "^1.0.5",
+    "react-icons": "^3.5.0",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-spring": "^8.0.19",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.5",
+    "redux-saga": "^1.0.2",
     "regenerator-runtime": "^0.13.1",
-    "scheduler": "^0.13.2"
+    "scheduler": "^0.13.2",
+    "styled-components": "^4.2.0",
+    "uuid": "^3.3.2"
   }
 }

@@ -1,5 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./app";
+import Routes from "./routes";
+import { ThemeProvider } from "styled-components";
+import theme from "./common/theme/theme";
+import "./common/theme/fontFace.scss";
+import AppProvicer from "./AppProvider";
 
-ReactDOM.render(<App />, document.getElementById("mainApp"));
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <AppProvicer>
+      <Routes />
+    </AppProvicer>
+  </ThemeProvider>,
+  document.getElementById("mainApp")
+);
