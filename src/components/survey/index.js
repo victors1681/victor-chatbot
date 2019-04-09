@@ -1,2 +1,2 @@
-import Survey from "./survey";
+import Survey from "./Survey";
 export default Survey;
