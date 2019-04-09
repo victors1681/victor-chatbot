@@ -60,7 +60,8 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.3",
     "webpack-bundle-analyzer": "^3.0.4",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
@@ -80,7 +81,6 @@
     "regenerator-runtime": "^0.13.1",
     "scheduler": "^0.13.2",
     "styled-components": "^4.2.0",
-    "uuid": "^3.3.2",
-    "webpack-dev-server": "^3.2.1"
+    "uuid": "^3.3.2"
   }
 }
