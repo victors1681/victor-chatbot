@@ -19,7 +19,7 @@ const Sidebar = () => {
   const userContext = useContext(UserContext);
   const chatContext = useContext(ChatContext);
 
-  const turnsGoal = 1;
+  const turnsGoal = 8;
 
   return (
     <SidebarWrapper>

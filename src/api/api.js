@@ -7,8 +7,6 @@ export const sendText = async (text, user) => {
 
 export const endChat = async (values, user) => {
   const payload = { text: `/endchat/${JSON.stringify(values)}`, user };
-
-  console.error("PAYLOAD", payload);
   const result = await axios.post("/chat", payload);
   return result;
 };

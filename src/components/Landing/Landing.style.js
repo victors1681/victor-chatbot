@@ -6,12 +6,12 @@ import {
 
 export const Card = styled(CardWrapper)`
   width: 40%;
-  height: 450px;
   min-width: 450px;
 
-  @media only screen and (max-width: 600px) {
-  width: 90% !important;
-  height: 50% !important;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+    width: 90% !important;
+    height: 50% !important;
+  }
 `;
 
 export const Header = styled(OriginalHeader)`

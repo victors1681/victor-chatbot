@@ -5,6 +5,7 @@ const getDevServer = () => ({
   compress: true,
   port: 9000,
   hot: true,
+  host: "0.0.0.0",
   disableHostCheck: true,
   historyApiFallback: true,
   inline: true,

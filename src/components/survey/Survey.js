@@ -33,12 +33,7 @@ const options = ["sa", "a", "n", "d", "done"];
 const generateCheckGroup = (question, fieldName) => {
   return options.map(o => (
     <Column key={o}>
-      <Field
-        type="radio"
-        value="Strongly Disagree"
-        data-question={question}
-        name={fieldName}
-      />
+      <Field type="radio" value={o} data-question={question} name={fieldName} />
     </Column>
   ));
 };
