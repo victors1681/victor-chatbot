@@ -12,7 +12,10 @@ const WelcomeText = ({ history }) => {
   const userContext = useContext(UserContext);
   const stateRef = useRef(toggle);
   stateRef.current = toggle;
-  items.push(userContext.name);
+
+  if (items.length === 1) {
+    items.push(userContext.name);
+  }
 
   const completeAnimation = () => {
     setTimeout(() => {

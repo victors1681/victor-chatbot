@@ -3,6 +3,7 @@ import { Card, Content, Header } from "./Landing.style";
 import UserContext from "../../contexts/UserContext";
 import ChatContext from "../../contexts/ChatContext";
 import { Error } from "common/styles/common.styled";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import {
   CardInput,
@@ -41,48 +42,56 @@ const onValidate = values => {
 
 const Landing = ({ history }) => {
   const chatContext = useContext(ChatContext);
+  const userContext = useContext(UserContext);
   const userInput = useRef();
-
   useEffect(() => {
     userInput.current.focus();
   }, []);
 
+  const onValidateCaptcha = code => {
+    userContext.setCaptcha(code);
+  };
+
   return (
-    <UserContext.Consumer displayName="AppContext Consumer">
-      {userContext => (
-        <Card>
-          <Header>Welcome to Amelia Social</Header>
-          <Content>
-            <Formik
-              onSubmit={onHandleSubmit(userContext, chatContext, history)}
-              validate={onValidate}
-              initialValues={{ name: "" }}
-            >
-              {props => (
-                <Form onSubmit={props.handleSubmit}>
-                  {props.errors &&
-                    Object.keys(props.errors).map(e => (
-                      <Error key={e}> {props.errors[e]}</Error>
-                    ))}
-                  <CardInput
-                    name="name"
-                    placeholder="Name"
-                    autoComplete="off"
-                    innerRef={userInput}
-                  />
-                  <CardButton disabled={props.isSubmitting} type="submit">
-                    Start Chat
-                  </CardButton>
-                </Form>
-              )}
-            </Formik>
-          </Content>
-          <CardLink href="https://www.ipsoft.com" target="_blank">
-            Learn more about IPSoft
-          </CardLink>
-        </Card>
-      )}
-    </UserContext.Consumer>
+    <Card>
+      <Header>Welcome to Amelia Social</Header>
+      <Content>
+        <Formik
+          onSubmit={onHandleSubmit(userContext, chatContext, history)}
+          validate={onValidate}
+          initialValues={{ name: "" }}
+        >
+          {props => (
+            <Form onSubmit={props.handleSubmit}>
+              {props.errors &&
+                Object.keys(props.errors).map(e => (
+                  <Error key={e}> {props.errors[e]}</Error>
+                ))}
+              <CardInput
+                name="name"
+                placeholder="Name"
+                autoComplete="off"
+                innerRef={userInput}
+              />
+              <ReCAPTCHA
+                style={{ marginTop: "20px" }}
+                sitekey="6LcEMp0UAAAAABaIVHy9_V4U-2CSPGAjElnxGmh2"
+                onChange={onValidateCaptcha}
+              />
+              <CardButton
+                disabled={props.isSubmitting || !userContext.captcha}
+                type="submit"
+              >
+                Start Chat
+              </CardButton>
+            </Form>
+          )}
+        </Formik>
+      </Content>
+      <CardLink href="https://www.ipsoft.com" target="_blank">
+        Learn more about IPSoft
+      </CardLink>
+    </Card>
   );
 };
 

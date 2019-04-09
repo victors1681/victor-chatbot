@@ -15,7 +15,7 @@ import ChatContext from "./contexts/ChatContext";
 const Routes = () => {
   const userContext = useContext(UserContext);
   const chatContext = useContext(ChatContext);
-  const isAllowed = !!userContext.id;
+  const isAllowed = !!userContext.id && userContext.captcha;
   const isCodeGenerated = !!chatContext.code;
   return (
     <BrowserRouter>

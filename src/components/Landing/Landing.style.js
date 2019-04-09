@@ -7,6 +7,7 @@ import {
 export const Card = styled(CardWrapper)`
   width: 40%;
   height: 450px;
+  min-width: 450px;
 
   @media only screen and (max-width: 600px) {
   width: 90% !important;

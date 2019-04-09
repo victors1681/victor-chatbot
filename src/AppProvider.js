@@ -44,6 +44,13 @@ const AppProvicer = props => {
     }));
   };
 
+  const setCaptcha = captcha => {
+    setUserState(prev => ({
+      ...prev,
+      captcha
+    }));
+  };
+
   const setRequesting = status => {
     setChatState(prev => ({
       ...prev,
@@ -52,6 +59,7 @@ const AppProvicer = props => {
   };
 
   initialUser.setUser = setUser;
+  initialUser.setCaptcha = setCaptcha;
   initialChat.addChatMessage = addChatMessage;
   initialChat.setRequesting = setRequesting;
   initialChat.addMsgFromCurrentUser = addMsgFromCurrentUser;
