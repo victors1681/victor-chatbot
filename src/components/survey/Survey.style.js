@@ -7,6 +7,10 @@ import {
   Header as OriginalHeader
 } from "common/styles/common.styled.js";
 
+export const TableContainer = styled.div`
+  overflow-x: auto;
+`;
+
 const tb = {};
 tb.Table = styled.div`
   display: table;
@@ -14,6 +18,11 @@ tb.Table = styled.div`
   table-layout: fixed;
   width: 100%;
   font-size: 13px;
+  min-width: 500px;
+
+  @media (min-width: 1281px) {
+    min-width: auto;
+  }
 `;
 
 tb.Table.Header = styled.div`

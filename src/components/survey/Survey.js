@@ -5,7 +5,13 @@ import {
   SecundaryBtn,
   Error
 } from "common/styles/common.styled.js";
-import { Table, TextArea, DoneBtn, Header as MainHeader } from "./Survey.style";
+import {
+  Table,
+  TextArea,
+  DoneBtn,
+  Header as MainHeader,
+  TableContainer
+} from "./Survey.style";
 import UserContext from "../../contexts/UserContext";
 import ChatContext from "../../contexts/ChatContext";
 import { endChat } from "../../api/api";
@@ -85,26 +91,28 @@ const Survey = ({ history }) => {
       >
         {props => (
           <Form className="survey">
-            <Table>
-              <Header>
-                <Column> </Column>
-                <Column>Strongly Disagree</Column>
-                <Column> Disagree</Column>
-                <Column> Neutral</Column>
-                <Column> Agree</Column>
-                <Column> Strongly Agree</Column>
-              </Header>
+            <TableContainer>
+              <Table>
+                <Header>
+                  <Column> </Column>
+                  <Column>Strongly Disagree</Column>
+                  <Column> Disagree</Column>
+                  <Column> Neutral</Column>
+                  <Column> Agree</Column>
+                  <Column> Strongly Agree</Column>
+                </Header>
 
-              {renderRadioSurvey()}
-              <Footer>
-                <Column>
-                  How would you describe your overall interaction?
-                </Column>
-                <Column style={{ width: "70%" }}>
-                  <TextArea component="textarea" name="q5" />
-                </Column>
-              </Footer>
-            </Table>
+                {renderRadioSurvey()}
+                <Footer>
+                  <Column>
+                    How would you describe your overall interaction?
+                  </Column>
+                  <Column style={{ width: "70%" }}>
+                    <TextArea component="textarea" name="q5" />
+                  </Column>
+                </Footer>
+              </Table>
+            </TableContainer>
             <Error>{props.errors.error && props.errors.error}</Error>
             <CardFooter>
               <SecundaryBtn as={Link} to="/chat">

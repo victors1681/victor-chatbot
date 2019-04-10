@@ -18,13 +18,16 @@ export const MainWrapper = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 80%;
-  //height: 80%;
   background: white;
   border-radius: 7px;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 1281px) {
+    width: 80%;
+  }
 `;
 
 export const Header = styled.h1`
@@ -54,6 +57,11 @@ export const CardFooter = styled.div`
   text-align: right;
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
+
+  @media (min-width: 1281px) {
+    padding-bottom: 10px;
+  }
 `;
 
 export const CardButton = styled.button`
