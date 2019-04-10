@@ -12,6 +12,9 @@ export const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (min-width: 320px) and (max-width: 480px) {
+    overflow: hide;
+  }
 `;
 
 export const Card = styled.div`
@@ -55,6 +58,7 @@ export const CardFooter = styled.div`
 
 export const CardButton = styled.button`
   display: block;
+  margin: auto;
   margin-top: 10%;
   width: 100%;
   padding: 12px 0;
@@ -91,10 +95,16 @@ export const CardLink = styled.a`
   text-align: center;
   cursor: pointer;
   transition: color 0.25s ease-in;
-  margin-top: auto;
+  margin-top: 5px;
   &:hover {
     color: #777;
   }
+`;
+export const CartLinkWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
 `;
 
 export const Icon = styled.svg`

@@ -10,10 +10,14 @@ import UserContext from "./contexts/UserContext";
 import ChatContext from "./contexts/ChatContext";
 
 const Routes = () => {
+  const isDev = process.env.NODE_ENV === "development";
+
   const userContext = useContext(UserContext);
   const chatContext = useContext(ChatContext);
-  const isAllowed = !!userContext.id && userContext.captcha;
-  const isCodeGenerated = !!chatContext.code;
+  const isAllowed = (!!userContext.id && userContext.captcha) || isDev;
+  const isCodeGenerated = !!chatContext.code || !isDev;
+
+  console.log("Enviroment", process.env.NODE_ENV, isDev);
   return (
     <BrowserRouter>
       <MainWrapper>
