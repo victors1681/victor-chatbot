@@ -8,7 +8,11 @@ import {
 
 export const Card = styled(OriginalCard)`
   padding: 70px;
-  width: 40%;
+  width: 90%;
+
+  @media (min-width: 1281px) {
+    width: 40%;
+  }
 `;
 
 export const Header = styled(OriginalHeader)`

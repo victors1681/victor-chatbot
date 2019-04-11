@@ -12,16 +12,22 @@ export const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (min-width: 320px) and (max-width: 480px) {
+    overflow: hide;
+  }
 `;
 
 export const Card = styled.div`
-  width: 80%;
-  //height: 80%;
   background: white;
   border-radius: 7px;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 1281px) {
+    width: 80%;
+  }
 `;
 
 export const Header = styled.h1`
@@ -51,10 +57,16 @@ export const CardFooter = styled.div`
   text-align: right;
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
+
+  @media (min-width: 1281px) {
+    padding-bottom: 10px;
+  }
 `;
 
 export const CardButton = styled.button`
   display: block;
+  margin: auto;
   margin-top: 10%;
   width: 100%;
   padding: 12px 0;
@@ -91,10 +103,16 @@ export const CardLink = styled.a`
   text-align: center;
   cursor: pointer;
   transition: color 0.25s ease-in;
-  margin-top: auto;
+  margin-top: 5px;
   &:hover {
     color: #777;
   }
+`;
+export const CartLinkWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
 `;
 
 export const Icon = styled.svg`

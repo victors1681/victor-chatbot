@@ -9,10 +9,10 @@ import {
   InstructionsWrapper,
   Header,
   Instruction,
-  ActionWrapper,
   GoalHeader,
   TurnsHeader,
-  DoneButton
+  DoneButton,
+  TunsContainer
 } from "./Sidebar.style.js";
 
 const Sidebar = () => {
@@ -31,9 +31,10 @@ const Sidebar = () => {
           Please complete 8 interactions with Amelia, when finished click on the
           Done button.
         </Instruction>
-        <ActionWrapper />
-        <GoalHeader>Goal: {turnsGoal} Turns </GoalHeader>
-        <TurnsHeader>So far: {chatContext.turns} turns</TurnsHeader>
+        <TunsContainer>
+          <GoalHeader>Goal: {turnsGoal} Turns </GoalHeader>
+          <TurnsHeader>So far: {chatContext.turns} turns</TurnsHeader>
+        </TunsContainer>
         <DoneButton
           as={Link}
           to="/survey"

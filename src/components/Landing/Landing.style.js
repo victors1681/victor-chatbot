@@ -5,12 +5,15 @@ import {
 } from "common/styles/common.styled.js";
 
 export const Card = styled(CardWrapper)`
-  width: 40%;
-  min-width: 450px;
+  width: 90%;
 
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
-    width: 90% !important;
-    height: 50% !important;
+  min-width: 200px;
+  margin: 10px;
+  justify-content: center;
+
+  @media (min-width: 1281px) {
+    width: 40%;
+    min-width: 450px;
   }
 `;
 
@@ -20,13 +23,21 @@ export const Header = styled(OriginalHeader)`
   font-weight: 300;
   text-align: center;
   vertical-align: middle;
-  margin-top: 100px;
+  margin-top: 20px;
+
+  @media (min-width: 1281px) {
+    margin-top: 100px;
+  }
 `;
 
 export const Content = styled.div`
+  margin: 10px;
+
   display: flex;
   flex-direction: column;
   justify-items: center;
-  margin: 5% 15% 15% 15%;
   justify-content: center;
+  @media (min-width: 1281px) {
+    margin: 5% 15% 15% 15%;
+  }
 `;
